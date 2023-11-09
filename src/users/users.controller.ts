@@ -2,16 +2,26 @@ import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('users')
 export class UsersController {
-  /***
-   * GET /users
-   * GET /users/:id
-   * POST /users
-   * PATCH /users/:id
-   * DELETE /users/:id
-   */
   @Get() // GET /users
-  findAll() {
-    return [];
+  getUsers() {
+    return { username: 'anson', email: 'anson@mail.com' };
+  }
+  @Get('posts')
+  getUsersPost() {
+    return {
+      username: 'anson',
+      email: 'anson@mail.com',
+      posts: [
+        {
+          id: 1,
+          title: 'Post 1',
+        },
+        {
+          id: 2,
+          title: 'Post 2',
+        },
+      ],
+    };
   }
   @Get(':id') // GET /users/:id
   findOne(@Param('id') id: string) {
